@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ForgeFit icon">
+  <rect width="512" height="512" rx="112" fill="#112d1f" />
+  <circle cx="256" cy="256" r="170" fill="#d98324" opacity="0.2" />
+  <path
+    d="M128 278h52l30-106 43 148 42-126 24 84h66"
+    fill="none"
+    stroke="#f7f1e6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="30"
+  />
+  <rect x="94" y="220" width="40" height="118" rx="18" fill="#f7f1e6" />
+  <rect x="378" y="220" width="40" height="118" rx="18" fill="#f7f1e6" />
+</svg>

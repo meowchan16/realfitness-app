@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101820" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>ForgeFit BMI</title>
+  </head>
+  <body class="bmi-page">
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">F</span>
+          <span>
+            <strong>ForgeFit</strong>
+            <small>BMI Checker</small>
+          </span>
+        </a>
+        <a class="button secondary button-link" href="index.html">Back to Home</a>
+      </header>
+
+      <main class="bmi-layout">
+        <section class="card-section glass-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">BMI Calculator</p>
+              <h2>See your BMI from height and weight</h2>
+            </div>
+          </div>
+
+          <form id="bmiForm" class="tracker-form">
+            <label>
+              Weight (kg)
+              <input type="number" id="bmiWeight" min="20" max="300" step="0.1" required />
+            </label>
+            <label>
+              Height (cm)
+              <input type="number" id="bmiHeight" min="80" max="250" step="0.1" required />
+            </label>
+            <button class="button primary wide" type="submit">Calculate BMI</button>
+          </form>
+        </section>
+
+        <section class="card-section glass-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">Your Result</p>
+              <h2>BMI summary</h2>
+            </div>
+          </div>
+
+          <div class="bmi-result">
+            <div>
+              <span class="label">BMI Value</span>
+              <strong id="bmiValue">-</strong>
+            </div>
+            <div>
+              <span class="label">Category</span>
+              <strong id="bmiCategory">-</strong>
+            </div>
+          </div>
+
+          <p id="bmiNote" class="hero-text small-text">
+            Add your height and weight to see your BMI.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="bmi.js"></script>
+  </body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ForgeFit Tracker helps you plan workouts by day, log what you did, and check your BMI."
+    />
+    <meta name="theme-color" content="#101820" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>ForgeFit Tracker</title>
+  </head>
+  <body>
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#dashboard">
+          <span class="brand-mark">F</span>
+          <span>
+            <strong>ForgeFit</strong>
+            <small>Daily Planner</small>
+          </span>
+        </a>
+
+        <nav class="nav-pills" aria-label="Primary">
+          <a href="#dashboard">Today</a>
+          <a href="#planner">Weekly Plan</a>
+          <a href="#log">Log Today</a>
+          <a href="#health">Health</a>
+          <a href="#history">History</a>
+        </nav>
+
+        <button id="installButton" class="button primary" hidden>Install App</button>
+      </header>
+
+      <main>
+        <section id="dashboard" class="hero-simple glass-panel">
+          <div class="hero-copy simple-copy">
+            <p class="eyebrow">Today’s Workout Guide</p>
+            <h1 id="todayHeading">Today is Monday.</h1>
+            <p id="todayPlanText" class="hero-text">
+              Set your weekly workout plan below so the app can tell you what to train today.
+            </p>
+
+            <div class="hero-actions">
+              <button id="demoButton" class="button primary">Load Demo Plan</button>
+              <a class="button secondary button-link" href="#planner">Set Weekly Plan</a>
+              <a class="button secondary button-link" href="#log">Log Today</a>
+            </div>
+
+            <div class="today-strip">
+              <article class="mini-stat">
+                <span>Current Day</span>
+                <strong id="currentDayCard">Monday</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Planned Focus</span>
+                <strong id="todayWorkoutBadge">Rest</strong>
+                <strong id="plannedFocusCard" hidden>Rest</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Completed Today</span>
+                <strong id="todayCompletionBadge">No log yet</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Total Logs</span>
+                <strong id="totalWorkouts">0</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Current Streak</span>
+                <strong id="currentStreak">0 days</strong>
+              </article>
+              <article class="mini-stat">
+                <span>Drive Backup</span>
+                <strong id="driveSummaryBadge">Ready later</strong>
+              </article>
+            </div>
+
+            <div class="coach-note simple-note">
+              <p class="label">Daily Note</p>
+              <p id="coachNote">
+                Plan your week, then log what you actually did today.
+              </p>
+              <span class="status-dot">Active</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="planner" class="card-section glass-panel planner-section">
+            <div class="section-heading">
+              <div>
+                <p class="label">Weekly Workout Plan</p>
+                <h2>Choose what to train each day</h2>
+              </div>
+            </div>
+
+            <form id="plannerForm" class="planner-form">
+              <div class="planner-days">
+                <label class="day-card">
+                  <span>Sunday</span>
+                  <select id="plan-sun" data-day="Sun">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Monday</span>
+                  <select id="plan-mon" data-day="Mon">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Tuesday</span>
+                  <select id="plan-tue" data-day="Tue">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Wednesday</span>
+                  <select id="plan-wed" data-day="Wed">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Thursday</span>
+                  <select id="plan-thu" data-day="Thu">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Friday</span>
+                  <select id="plan-fri" data-day="Fri">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+                <label class="day-card">
+                  <span>Saturday</span>
+                  <select id="plan-sat" data-day="Sat">
+                    <option value="Rest">Rest</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Shoulders">Shoulders</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Core">Core</option>
+                    <option value="Cardio">Cardio</option>
+                    <option value="Full Body">Full Body</option>
+                  </select>
+                </label>
+              </div>
+
+              <button type="submit" class="button primary">Save Weekly Plan</button>
+            </form>
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="label">This Week Overview</p>
+                <h2>Quick view</h2>
+              </div>
+            </div>
+            <div id="planOverview" class="plan-overview"></div>
+        </section>
+
+        <section id="log" class="content-grid">
+          <section class="card-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="label">What You Did Today</p>
+                <h2>Log your workout</h2>
+              </div>
+            </div>
+
+            <form id="workoutForm" class="tracker-form">
+              <label>
+                Date
+                <input type="date" id="workoutDate" name="workoutDate" required />
+              </label>
+              <label>
+                Planned workout
+                <input type="text" id="plannedWorkout" name="plannedWorkout" readonly />
+              </label>
+              <label>
+                What you did
+                <input
+                  type="text"
+                  id="workoutName"
+                  name="workoutName"
+                  placeholder="Legs, Chest, Cardio..."
+                  required
+                />
+              </label>
+              <label>
+                Duration (minutes)
+                <input
+                  type="number"
+                  id="duration"
+                  name="duration"
+                  min="10"
+                  max="300"
+                  value="60"
+                  required
+                />
+              </label>
+              <label class="wide">
+                Notes
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="What exercises did you do today?"
+                ></textarea>
+              </label>
+              <button type="submit" class="button primary wide">Save Today’s Workout</button>
+            </form>
+          </section>
+
+          <section class="card-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="label">Drive Backup</p>
+                <h2>Prepare your saved logs</h2>
+              </div>
+            </div>
+
+            <div class="backup-grid single-column">
+              <article class="backup-card">
+                <p class="label">Local Save</p>
+                <p>Your workout logs are saved in the browser right now.</p>
+              </article>
+              <article class="backup-card">
+                <p class="label">Google Drive Step</p>
+                <p>
+                  Click below to export your saved workout data as JSON. This file
+                  is what you can later send to Google Drive integration.
+                </p>
+                <button id="exportButton" class="button secondary" type="button">
+                  Export Workout Data
+                </button>
+              </article>
+              <article class="backup-card">
+                <p class="label">Status</p>
+                <p id="backupStatus">No backup action yet.</p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section id="health" class="content-grid">
+          <section class="card-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="label">Health Section</p>
+                <h2>Check your BMI</h2>
+              </div>
+            </div>
+
+            <div class="bmi-promo">
+              <p>
+                Add your height and weight to view your BMI on the next page.
+              </p>
+              <a class="button primary button-link" href="bmi.html">Add BMI</a>
+            </div>
+          </section>
+
+          <section class="card-section glass-panel">
+            <div class="section-heading">
+              <div>
+                <p class="label">Health Snapshot</p>
+                <h2>Your saved body details</h2>
+              </div>
+            </div>
+
+            <form id="metricsForm" class="tracker-form">
+              <label>
+                Weight (kg)
+                <input
+                  type="number"
+                  id="weight"
+                  name="weight"
+                  min="20"
+                  max="300"
+                  step="0.1"
+                  placeholder="72.5"
+                />
+              </label>
+              <label>
+                Height (cm)
+                <input
+                  type="number"
+                  id="height"
+                  name="height"
+                  min="80"
+                  max="250"
+                  step="0.1"
+                  placeholder="172"
+                />
+              </label>
+              <button type="submit" class="button secondary wide">Save Health Details</button>
+            </form>
+
+            <div class="mini-metrics health-metrics">
+              <div>
+                <span>Saved Weight</span>
+                <strong id="weightValue">-</strong>
+              </div>
+              <div>
+                <span>Saved Height</span>
+                <strong id="heightValue">-</strong>
+              </div>
+              <div>
+                <span>Estimated BMI</span>
+                <strong id="bmiPreview">-</strong>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="history" class="card-section glass-panel history-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">Workout History</p>
+              <h2>What you logged</h2>
+            </div>
+            <button id="clearButton" class="button ghost" type="button">Clear All</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="historyItemTemplate">
+      <article class="history-item">
+        <div class="history-topline">
+          <h3></h3>
+          <span class="history-date"></span>
+        </div>
+        <div class="history-meta"></div>
+        <p class="history-notes"></p>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
