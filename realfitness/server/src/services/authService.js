@@ -58,14 +58,14 @@ function getSessionToken(request) {
 function setSessionCookie(response, token) {
   response.setHeader(
     "Set-Cookie",
-    `${SESSION_COOKIE_NAME}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${SESSION_TTL_SECONDS}`
+    `${SESSION_COOKIE_NAME}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=${SESSION_TTL_SECONDS}`
   );
 }
 
 function clearSessionCookie(response) {
   response.setHeader(
     "Set-Cookie",
-    `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+    `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=0`
   );
 }
 
